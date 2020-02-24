@@ -1,4 +1,5 @@
 require("dotenv").config();
+const fs = require("fs");
 const Spotify = require('node-spotify-api');
 const axios = require('axios');
 const moment = require('moment');
@@ -7,6 +8,10 @@ const keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
 function spotifyThis(){
+  console.log(input);
+  if(input == ""){
+    input = "The Sign"
+  };
   spotify.search({ type: 'track', query: input }, function(err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
@@ -34,7 +39,8 @@ function concertThis(){
     // handle error
     console.log(error);
   })
-}
+};
+
 
 function movieThis(){
   if(input == ""){
@@ -62,8 +68,29 @@ var input = process.argv.slice(3).join(" ");
 
 var action = process.argv[2];
 
+function doWhatItSays(){
+  //Reads file for random.txt to pull commands for node
+   var data = fs.readFile("random.txt", "utf8", function(err, data) {
+    if (err) {
+      return console.log(err);
+    }
+    
+    //Separate items in random.txt
+    data = data.split(",");
+    action = data[0];
+    input = data[1]
+
+    if(action == "spotify-this-song"){
+      spotifyThis();
+    }
+  });
+};
+
+
+
 switch (action) {
-  case "spotify-this":
+
+  case "spotify-this-song":
     spotifyThis();
     break;
 
@@ -74,6 +101,11 @@ switch (action) {
   case "movie-this":
     movieThis();
     break;
+
+  case "do-what-it-says":
+    doWhatItSays();
+    break;
+
   }
 
 /*

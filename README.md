@@ -15,13 +15,34 @@ In order to ready liri for us, complete the following steps:
 
 4a)Liri offers the following four options:
 1. spotify-this-song - Search for a song on Spotify and receive information.
+
+[Example of spotify-this-song in action.](./demo-images/spotify-this-song-preview.png)
+
 2. movie-this - Search for a movie on OMDB and receive information.
+
+[Example of movie-this in action.](./demo-images/movie-this-preview.png)
+
+2a. If no query is provided for movie-this, the app will default to searching for the movie "Mr. Nobody."
+
+[Example of movie-this default in action.](./demo-images/movie-this-default-preview.png)
+
+
 3. concert-this - Search for an artist and receive concert scheduling data from 
    the Bands in Town API.
+
+[Example of concert-this in action.](./demo-images/concert-this-preview.png)
+
 4. do-what-it-says - Searches for "I want it that way" in Spotify.
 
-Example: 'node liri.js spotify-this-song Diamond Eyes' will return: 
-    Diamond Eyes
-    Song name: Diamond Eyes (Boom-Lay Boom-Lay Boom)
-    Listen to a preview: https://open.spotify.com/track/1PLMK1ui86iHHG3FM1N7ue
-    Album: The Sound of Madness
+[Example of do-what-it-says in action.](./demo-images/do-what-it-says-preview.png)
+
+Technologies used in this project:
+
+- Node.js was used to create the command line interface.
+
+- APIs from Bands-in-Town, OMDB, and Spotify to provide the information for the features.
+
+- NPM package "Axios" was used to access the Bands-in-Town and OMDB APIs.
+
+- NPM package "moment" to convert times received by the API.
+
